@@ -42,54 +42,67 @@ VENCIDO: cuando el préstamo supera la fecha límite
 DEVUELTO: cuando el administrador registra la devolución y la copia vuelve a estar disponible para nuevos préstamos.
 ---
 ## Funcionalidades Principales
-- Inicio de sesión con RUT y contraseña
-![Login](src/docs/img/presentacion/Login.PNG)
-- Cerrar sesion
-![Cerrar Sesión](src/docs/img/presentacion/cerrar sesion.PNG)
+- Inicio de sesión con RUT y contraseña  
+![Login](./src/docs/img/presentacion/Login.PNG)
+
+- Cerrar sesión  
+![Cerrar Sesión](./src/docs/img/presentacion/CerrarSesion.PNG)
+
 ### 👤 Estudiante
-- Consulta del catálogo completo de libros
-![Catálogo](src/docs/img/presentacion/Catalogo.PNG)
-- Vista de detalle del libro
-![Detalle Libro](src/docs/img/presentacion/DetalleLibro.PNG)
-- Solicitud de préstamo
-![Solicitud Confirmación](src/docs/img/presentacion/solicitudConfirmacion.PNG)
-- Préstamos del estudiante
-![Mis Préstamos](src/docs/img/presentacion/MisPrestamos.PNG)
+- Consulta del catálogo completo de libros  
+![Catálogo](./src/docs/img/presentacion/Catalogo.PNG)
+
+- Vista de detalle del libro  
+![Detalle Libro](./src/docs/img/presentacion/DetalleLibro.PNG)
+
+- Solicitud de préstamo  
+![Solicitud Confirmación](./src/docs/img/presentacion/solicitudConfirmacion.PNG)
+
+- Préstamos del estudiante  
+![Mis Préstamos](./src/docs/img/presentacion/MisPrestamos.PNG)
+
 ### 🛠️ Administrador
-- Gestión del catálogo
-![Libros](src/docs/img/presentacion/Libros.PNG)
-- Agregar Libros
-![Agregar Libro](src/docs/img/presentacion/AgregarLibro.PNG)
-- Editar Libro
-![Editar Libro](src/docs/img/presentacion/EditarLibro.PNG)
-- Gestión de copias
-![Copias](src/docs/img/presentacion/Copias.PNG)
-- Gestion Prestamos Solicitados - Entregados - Vencidos - Devueltos
-![Préstamos Solicitados](src/docs/img/presentacion/PrestamosSol.PNG)
-![Préstamos Entregados](src/docs/img/presentacion/PrestamosEnt.PNG)
-![Préstamos Vencidos](src/docs/img/presentacion/PrestamosVen.PNG)
-![Préstamos Devueltos](src/docs/img/presentacion/PrestamosDev.PNG)
+- Gestión del catálogo  
+![Libros](./src/docs/img/presentacion/Libros.PNG)
+
+- Agregar Libros  
+![Agregar Libro](./src/docs/img/presentacion/AgregarLibro.PNG)
+
+- Editar Libro  
+![Editar Libro](./src/docs/img/presentacion/EditarLibro.PNG)
+
+- Gestión de copias  
+![Copias](./src/docs/img/presentacion/Copias.PNG)
+
+- Gestión Préstamos Solicitados - Entregados - Vencidos - Devueltos  
+![Préstamos Solicitados](./src/docs/img/presentacion/PrestamosSol.PNG)  
+![Préstamos Entregados](./src/docs/img/presentacion/PrestamosEnt.PNG)  
+![Préstamos Vencidos](./src/docs/img/presentacion/PrestamosVen.PNG)  
+![Préstamos Devueltos](./src/docs/img/presentacion/PrestamosDev.PNG)
+
 ---
+
 ## Credenciales de Prueba
 ### Administrador:
-Usuario: 11565421-1
-Contrasena: carla2024
+Usuario: 11565421-1  
+Contraseña: carla2024  
+
 ### Estudiante
-Usuario: 19876543-2
-Contrasena: sumac456
+Usuario: 19876543-2  
+Contraseña: sumac456  
 
 ---
 
 ## Base de Datos
-Los archivos DDL y DML se encuentran en: BibliotecaWeb\src\docs\sql.
+Los archivos DDL y DML se encuentran en: `BibliotecaWeb/src/docs/sql`.
 
-### Diagrama ER
-![Diagrama ER](src/docs/img/sql/DiagramaER.PNG)
-### Tablas
-![Tabla Copias](src/docs/img/sql/TablaCopias.PNG)
-![Tabla Libros](src/docs/img/sql/TablaLibros.PNG)
-![Tabla Préstamos](src/docs/img/sql/TablaPrestamos.PNG)
-![Tabla Usuarios](src/docs/img/sql/TablaUsuarios.PNG)
+### Diagrama ER  
+![Diagrama ER](./src/docs/img/sql/DiagramaER.PNG)
 
+### Tablas  
+![Tabla Copias](./src/docs/img/sql/TablaCopias.PNG)  
+![Tabla Libros](./src/docs/img/sql/TablaLibros.PNG)  
+![Tabla Préstamos](./src/docs/img/sql/TablaPrestamos.PNG)  
+![Tabla Usuarios](./src/docs/img/sql/TablaUsuarios.PNG)
 
 
