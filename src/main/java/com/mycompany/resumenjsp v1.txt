@@ -1,0 +1,506 @@
+index.jsp:
+"""
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login - Biblioteca Digital</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body class="d-flex align-items-center justify-content-center bg-secondary" style="height: 100vh;">
+
+        <div class="card shadow bg-dark text-white" style="width: 400px;">
+            <div class="card-body p-5">
+                <h3 class="card-title text-center mb-4">📚 Biblioteca Digital</h3>
+
+                <form method="POST" action="login">
+                    <div class="mb-3">
+                        <label for="usuario" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" id="usuario" name="usuario" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="contrasena" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+                </form>
+            </div>
+        </div>
+        <div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title">❌ Error de autenticación</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        Usuario o contraseña incorrectos. Intenta nuevamente.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="logoutModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-secondary text-white">
+                        <h5 class="modal-title">✅ Sesión cerrada</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        Has cerrado sesión correctamente.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Mensaje de Datos de Login erroneos -->
+        <%
+            String error = request.getParameter("error");
+            if ("1".equals(error)) {
+        %>
+        <script>
+            var errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+            errorModal.show();
+            window.history.replaceState({}, document.title, window.location.pathname);
+        </script>
+        <%
+            }
+        %>
+        
+        <!-- Modal de Cerrar sesion -->
+        <%
+            String logout = request.getParameter("logout");
+            if ("1".equals(logout)) {
+        %>
+        <script>
+            var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
+            logoutModal.show();
+            window.history.replaceState({}, document.title, window.location.pathname);
+        </script>
+        <%
+            }
+        %>
+    </body>
+</html>
+"""
+libros/detalles.jsp:
+"""
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<div class="container mt-4">
+    <a href="libros" class="btn btn-outline mb-3">← Volver al catálogo</a>
+    
+    <div class="card shadow-lg">
+        <div class="card-body p-5">
+            <div class="row">
+                <!-- IZQUIERDA: Portada -->
+                <div class="col-md-3 text-center">
+                    <div class="bg-light p-4 rounded" style="height: 300px; display: flex; align-items: center; justify-content: center;">
+                        <div>
+                            <div style="font-size: 4rem;">📖</div>
+                            <small class="text-muted">Portada no disponible</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- DERECHA: Información -->
+                <div class="col-md-9">
+                    <h1 class="mb-2">Don Quijote de la Mancha</h1>
+                    <p class="text-muted mb-4" style="font-size: 1.1rem;">
+                        por <strong>Miguel de Cervantes</strong>
+                    </p>
+                    
+                    <!-- Metadata -->
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <p><strong>ISBN:</strong> <code>978-1234567890</code></p>
+                            <p><strong>Género:</strong> <span class="badge bg-info">Ficción</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Editorial:</strong> Planeta</p>
+                            <p><strong>Año:</strong> 1605</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Descripción -->
+                    <hr>
+                    <h5 class="mb-3">Sinopsis</h5>
+                    <p class="text-justify">
+                        Don Quijote es una novela escrita por Miguel de Cervantes. 
+                        Publicada su primera parte en 1605 y su continuación en 1615, 
+                        es una de las obras más destacadas de la literatura española y 
+                        universal. Cuenta las aventuras de Alonso Quixano, un hidalgo que 
+                        cree estar loco por leer novelas de caballerías...
+                    </p>
+                    
+                    <!-- Estado -->
+                    <hr>
+                    <div class="alert alert-success">
+                        <strong>✅ Disponible</strong> - 3 copias en stock
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Acciones según rol -->
+            <hr>
+            <div class="mt-4">
+                <% String rol = (String) session.getAttribute("rol");
+                   if ("alumno".equals(rol)) { %>
+                    <button class="btn btn-primary btn-lg">📋 Solicitar préstamo</button>
+                <% } else if ("admin".equals(rol)) { %>
+                    <button class="btn btn-warning btn-lg">✏️ Editar</button>
+                    <button class="btn btn-danger btn-lg">🗑️ Eliminar</button>
+                <% } %>
+                <a href="libros" class="btn btn-secondary btn-lg">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</div>
+"""
+libros/lista.jsp:
+"""
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<div class="container mt-4">
+    <h1>Catálogo de Libros</h1>
+    
+    <table class="table table-striped mt-4">
+        <thead class="table-primary">
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>ISBN</th>
+                <th>Género</th>
+                <th>Disponible</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Don Quijote</td>
+                <td>Miguel de Cervantes</td>
+                <td>978-1234567890</td>
+                <td>Ficción</td>
+                <td><span class="badge bg-success">Sí</span></td>
+                <td>
+                    <% String rol = (String) session.getAttribute("rol");
+                       if ("alumno".equals(rol)) { %>
+                        <button class="btn btn-sm btn-info">Ver</button>
+                        <button class="btn btn-sm btn-warning">Pedir prestado</button>
+                    <% } else if ("admin".equals(rol)) { %>
+                        <button class="btn btn-sm btn-info">Ver</button>
+                        <button class="btn btn-sm btn-primary">Actualizar datos</button>
+                        <button class="btn btn-sm btn-secondary">Actualizar stock</button>
+                    <% } %>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>1984</td>
+                <td>George Orwell</td>
+                <td>978-0987654321</td>
+                <td>Ficción</td>
+                <td><span class="badge bg-danger">No</span></td>
+                <td>
+                    <% if ("alumno".equals(rol)) { %>
+                        <a href="libros?accion=detalle&id=1" class="btn btn-sm btn-info">Ver</a>
+                        <button class="btn btn-sm btn-warning" disabled>Pedir prestado</button>
+                    <% } else if ("admin".equals(rol)) { %>
+                        <a href="libros?accion=detalle&id=1" class="btn btn-sm btn-info">Ver</a>
+                        <button class="btn btn-sm btn-primary">Actualizar datos</button>
+                        <button class="btn btn-sm btn-secondary">Actualizar stock</button>
+                    <% } %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+"""
+prestamos/lista-admin.jsp:
+"""
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<div class="container mt-4">
+    <h1>Gestión de Préstamos</h1>
+    
+    <!-- TABS -->
+    <ul class="nav nav-tabs mt-4" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="solicitados-tab" data-bs-toggle="tab" data-bs-target="#solicitados" type="button" role="tab">
+                Solicitados
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="entregados-tab" data-bs-toggle="tab" data-bs-target="#entregados" type="button" role="tab">
+                Entregados
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="vencidos-tab" data-bs-toggle="tab" data-bs-target="#vencidos" type="button" role="tab">
+                Vencidos
+            </button>
+        </li>
+    </ul>
+
+    <!-- CONTENIDO TABS -->
+    <div class="tab-content mt-3">
+        
+        <!-- TAB 1: SOLICITADOS -->
+        <div class="tab-pane fade show active" id="solicitados" role="tabpanel">
+            <table class="table table-striped">
+                <thead class="table-primary">
+                    <tr>
+                        <th>RUT</th>
+                        <th>Nombre Alumno</th>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Fecha Solicitud</th>
+                        <th>Fecha Vencimiento</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12345678-9</td>
+                        <td>Juan García</td>
+                        <td>Don Quijote</td>
+                        <td>Miguel de Cervantes</td>
+                        <td>2026-03-09</td>
+                        <td>2026-05-09</td>
+                        <td>
+                            <button class="btn btn-sm btn-success">Entregar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>87654321-0</td>
+                        <td>María López</td>
+                        <td>1984</td>
+                        <td>George Orwell</td>
+                        <td>2026-03-08</td>
+                        <td>2026-05-08</td>
+                        <td>
+                            <button class="btn btn-sm btn-success">Entregar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TAB 2: ENTREGADOS -->
+        <div class="tab-pane fade" id="entregados" role="tabpanel">
+            <table class="table table-striped">
+                <thead class="table-primary">
+                    <tr>
+                        <th>RUT</th>
+                        <th>Nombre Alumno</th>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Fecha Entrega</th>
+                        <th>Fecha Vencimiento</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12345678-9</td>
+                        <td>Juan García</td>
+                        <td>El Quijote 2</td>
+                        <td>Cervantes</td>
+                        <td>2026-02-10</td>
+                        <td>2026-04-10</td>
+                        <td>
+                            <button class="btn btn-sm btn-warning">Devolver</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TAB 3: VENCIDOS -->
+        <div class="tab-pane fade" id="vencidos" role="tabpanel">
+            <table class="table table-striped">
+                <thead class="table-danger">
+                    <tr>
+                        <th>RUT</th>
+                        <th>Nombre Alumno</th>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Fecha Entrega</th>
+                        <th>Fecha Vencimiento</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-danger">
+                        <td>87654321-0</td>
+                        <td>María López</td>
+                        <td>Cien años de soledad</td>
+                        <td>García Márquez</td>
+                        <td>2025-12-10</td>
+                        <td>2026-02-10</td>
+                        <td>
+                            <button class="btn btn-sm btn-warning">Devolver</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+"""
+prestamos/lista-alumno.jsp:
+"""
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<div class="container mt-4">
+    <h1>Mis Préstamos</h1>
+    
+    <table class="table table-striped mt-4">
+        <thead class="table-primary">
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Fecha Entrega</th>
+                <th>Fecha Vencimiento</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Don Quijote</td>
+                <td>Miguel de Cervantes</td>
+                <td>2026-01-10</td>
+                <td>2026-03-10</td>
+                <td><span class="badge bg-success">ENTREGADO</span></td>
+                <td>
+                    <button class="btn btn-sm btn-info">Ver detalle</button>
+                </td>
+            </tr>
+            <tr class="table-danger">
+                <td>1984</td>
+                <td>George Orwell</td>
+                <td>2025-12-10</td>
+                <td>2026-02-10</td>
+                <td><span class="badge bg-danger">VENCIDO</span></td>
+                <td>
+                    <button class="btn btn-sm btn-info">Ver detalle</button>
+                </td>
+            </tr>
+            <tr>
+                <td>El Quijote 2</td>
+                <td>Cervantes</td>
+                <td class="text-muted">-</td>
+                <td>2026-04-10</td>
+                <td><span class="badge bg-warning">SOLICITADO</span></td>
+                <td>
+                    <button class="btn btn-sm btn-info">Ver detalle</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+"""
+dashboard.jsp:
+"""
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    // Permite cambiar rol por parámetro GET para pruebas
+    String rolParam = request.getParameter("rol");
+    if (rolParam != null) {
+        session.setAttribute("rol", rolParam);
+    }
+    
+    // Inicializar sesión si no existe rol
+    if (session.getAttribute("rol") == null) {
+        session.setAttribute("rol", "alumno"); // Por defecto
+        session.setAttribute("usuario", "Juan García");
+    }
+%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Biblioteca Digital</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <div class="navbar-brand">
+                    <span>📚 Biblioteca Digital</span>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <form class="d-flex flex-grow-1 mx-4" action="#">
+                        <input class="form-control me-2" type="text" 
+                               placeholder="${sessionScope.rol == 'admin' ? 'Ingresa RUT alumno...' : 'Buscar libros...'}">
+                        <button class="btn btn-light" type="submit">🔍</button>
+                    </form>            
+                    <ul class="navbar-nav ms-auto">
+                        <% String rol = (String) session.getAttribute("rol");
+                           if ("alumno".equals(rol)) { %>
+                        <li class="nav-item"><a class="nav-link" href="libros">Catálogo</a></li>
+                        <li class="nav-item"><a class="nav-link" href="prestamos">Mis Libros<</a></li>
+                            <% } else if ("admin".equals(rol)) { %>
+                        <li class="nav-item"><a class="nav-link" href="prestamos">Préstamos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="libros">Libros</a></li>
+                            <% } %>
+                        <li class="nav-item">
+                            <!-- Botón que abre el modal en vez de enviar directamente -->
+                            <button type="button" class="nav-link btn btn-link" data-bs-toggle="modal" data-bs-target="#confirmLogoutModal">
+                                Salir
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <main class="container mt-4">
+            <jsp:include page="${contenido}" />
+        </main>
+        <footer class="bg-dark text-white text-center py-3 fixed-bottom">
+            <p>&copy; 2026 Biblioteca Digital</p>
+        </footer>
+        <!-- Modal confirmacion de cerrar sesion -->
+        <div class="modal fade" id="confirmLogoutModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                        <h5 class="modal-title text-white">Confirmar cierre de sesión</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Estás seguro que deseas cerrar tu sesión?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                        <!-- Este botón sí envía el formulario -->
+                        <form method="POST" action="logout" style="display:inline;">
+                            <button type="submit" class="btn btn-dark">Cerrar sesión</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
+"""
