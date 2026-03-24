@@ -119,7 +119,9 @@ del mismo título si existen copias.
 ---
 
 ## Base de Datos
-
+Se debe configurar la PASSWORD de la base de datos local de su propio equipo en:
+archivo: DatabaseConnection: private static final String PASSWORD = "";
+cambiar "" por tu propia clave de conexion
 Los archivos DDL y DML se encuentran en:
 
 ```
