@@ -1,7 +1,8 @@
 # 📚 Biblioteca Digital UNTEC 
 
-## Tecnologías Utilizadas:
+Proyecto entregable ABP para Bootcamp, esta es la primera version cual objetivo es ser evaluada.
 
+## Tecnologías Utilizadas:
 - Java EE
 - Jakarta Servlet
 - JSP 
@@ -22,6 +23,8 @@ El proyecto implementa el patrón de diseño MVC con acceso a base de datos medi
 gestión de sesiones de usuario, vistas dinámicas con JSP y JSTL, y despliegue en Apache Tomcat.  
 Permite a estudiantes consultar el catálogo y solicitar préstamos, y a administradores gestionar libros,  
 copias y el ciclo completo de préstamos.
+Este proyecto esta pensado para ser una 1ra version (entregable ABP) y considera futuras actualizaciones
+para portafolio, actualmente esta en un estado funcional y con mejoras consideradas a futuro.
 
 ---
 
@@ -36,6 +39,8 @@ El sistema contempla dos tipos de usuario:
 
 Los estudiantes pueden consultar el catálogo disponible y solicitar préstamos de libros.  
 Los administradores gestionan el catálogo completo y administran el ciclo de vida de cada préstamo.
+
+Implementaciones extra:
 
 Cada libro puede tener múltiples copias físicas. Cuando un estudiante solicita un libro,  
 el sistema asigna automáticamente una copia disponible, permitiendo múltiples préstamos simultáneos  
